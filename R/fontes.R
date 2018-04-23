@@ -1,13 +1,25 @@
-library(httr)
-library(jsonlite)
-library(data.table)
-library(dplyr)
-
+#' Return data formated for citation .
+#'
+#' \code{format_data} return data formated for citation
+#'
+#'
+#' @param date_value data as Date object
+#'
+#'
 format_data <- function(date_value){
   return(ifelse(length(date) <1, '', format(as.Date(date_value), '%m/%Y')))
 
 }
 
+#' Return citation for a given serie.
+#'
+#' \code{make_citation} Return citation for a given serie.
+#'
+#'
+#' @param data They type of return, it could be data.table or tibble.
+#'
+#' @return return a string
+#'
 make_citation <- function(data){
   name_serie <- ifelse('FNTNOME' %in% names(data), data$FNTNOME, '')
   dat_ini <- ifelse('SERMINDATA' %in% names(data), data$SERMINDATA, '')
@@ -19,17 +31,35 @@ make_citation <- function(data){
   return(cite)
 }
 
+#' Return data from api in data.table or tibble.
+#'
+#' \code{output_control} Return data from api in data.table or tibble
+#'
+#' @param data Data.frame to be converted
+#' @param type They type of return, it could be data.table or tibble.
+#'
+#' @return a data.table or tibble
+#'
 output_control <- function(data, type="data.table"){
   if(type == "data.table"){
     setDT(data)
     return(data)
   }
   if(type == "tibble"){
-    print("Passou aqui")
     return(as_tibble(data))
   }
 }
-
+#' Make a call on IpeaData api.
+#'
+#' \code{basic_call} return data from ipeaData
+#'
+#' @param api Url to be called
+#' @param type The type of return, it could be data.table or tibble.
+#'
+#' @return a data.table or tibble
+#'
+#' @examples
+#'    fontes <- get_fonts()
 basic_call <- function(api, type="data.table"){
   get_return <- GET(api)
   return_json <- httr::content(get_return, as = "text")
@@ -41,10 +71,13 @@ basic_call <- function(api, type="data.table"){
 #' \code{get_fonts} return fonts from ipeaData
 #'
 #'
-#' @param type They type of return, it could be data.table or tibble.
+#' @param type The type of return, it could be data.table or tibble.
 #'
-#' @import data.table
-#' @import dplyr
+#' @importFrom data.table setDT
+#' @importFrom dplyr %>%
+#' @importFrom dplyr as_tibble
+#' @import httr
+#' @import jsonlite
 #' @return a data.table with all fonts on ipeaData
 #'
 #' @examples
@@ -67,7 +100,7 @@ get_fonts <- function(type="data.table"){
 #' @return a data.table with all fonts on ipeaData
 #'
 #' @examples
-#'    fontes <- get_metadata(420)
+#'    fontes <- get_metadata('ADIMS')
 #' @export
 #'
 get_metadata <- function(serie = NULL, type='data.table'){
@@ -92,7 +125,7 @@ get_metadata <- function(serie = NULL, type='data.table'){
 #' @return a data.table with all fonts on ipeaData
 #'
 #' @examples
-#'    fontes <- get_values()
+#'    fontes <- get_values('ADIMS')
 #' @export
 #'
 get_values<- function(serie, type='data.table'){

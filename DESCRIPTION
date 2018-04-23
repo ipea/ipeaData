@@ -4,6 +4,7 @@ Title: Package to getting data from IPEADATA
 Version: 0.0.1
 Authors@R: c(
     person("Gustavo","Coelho", role=c("aut","cre"), email="gustavo.coelho@ipea.gov.br"),
+    person("Lucas","Mation", role=c("aut"), email="lucas.mation@ipea.gov.br")
     )
 Maintainer: Gustavo Coelho <gustavo.coelho@ipea.gov.br>
 Description: Functions to access data from IPEA (Instituto de Pesquisa Economica Aplicada) hosted
@@ -19,6 +20,8 @@ Depends: R (>= 3.0)
 Imports:
     data.table,
     RCurl,
-    dplyr
+    dplyr,
+    httr,
+    jsonlite
 Suggests: testthat,
     covr
