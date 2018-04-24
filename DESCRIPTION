@@ -1,14 +1,14 @@
 Package: ipeaData
 Type: Package
-Title: Package to getting data from IPEADATA
+Title: Getting Data from IPEADATA
 Version: 0.0.1
 Authors@R: c(
     person("Gustavo","Coelho", role=c("aut","cre"), email="gustavo.coelho@ipea.gov.br"),
     person("Lucas","Mation", role=c("aut"), email="lucas.mation@ipea.gov.br")
     )
 Maintainer: Gustavo Coelho <gustavo.coelho@ipea.gov.br>
-Description: Functions to access data from IPEA (Instituto de Pesquisa Economica Aplicada) hosted
-             at (http://www.ipeadata.gov.br/). It gets metadata and values for all series on 
+Description: Access data from IPEA (Instituto de Pesquisa Economica Aplicada) hosted
+             at <http://www.ipeadata.gov.br>. It gets metadata and values for all series on 
              the website.
 License: GPL-3
 Encoding: UTF-8
