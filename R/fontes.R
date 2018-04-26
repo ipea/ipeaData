@@ -58,8 +58,6 @@ output_control <- function(data, type="data.table"){
 #'
 #' @return a data.table or tibble
 #'
-#' @examples
-#'    fontes <- get_fonts()
 basic_call <- function(api, type="data.table"){
   get_return <- GET(api)
   return_json <- httr::content(get_return, as = "text")
@@ -80,8 +78,7 @@ basic_call <- function(api, type="data.table"){
 #' @import jsonlite
 #' @return a data.table with all fonts on ipeaData
 #'
-#' @examples
-#'    fontes <- get_fonts()
+#'
 #' @export
 #'
 get_fonts <- function(type="data.table"){
@@ -99,8 +96,6 @@ get_fonts <- function(type="data.table"){
 #'
 #' @return a data.table with all fonts on ipeaData
 #'
-#' @examples
-#'    fontes <- get_metadata('ADIMS')
 #' @export
 #'
 get_metadata <- function(serie = NULL, type='data.table'){
@@ -124,8 +119,6 @@ get_metadata <- function(serie = NULL, type='data.table'){
 #'
 #' @return a data.table with all fonts on ipeaData
 #'
-#' @examples
-#'    fontes <- get_values('ADIMS')
 #' @export
 #'
 get_values<- function(serie, type='data.table'){

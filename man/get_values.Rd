@@ -17,6 +17,3 @@ a data.table with all fonts on ipeaData
 \description{
 \code{get_values} return values from a serie.
 }
-\examples{
-   fontes <- get_values('ADIMS')
-}

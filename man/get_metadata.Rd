@@ -17,6 +17,3 @@ a data.table with all fonts on ipeaData
 \description{
 \code{get_metadata} Return metadadata from a serie on Ipeadata.
 }
-\examples{
-   fontes <- get_metadata('ADIMS')
-}

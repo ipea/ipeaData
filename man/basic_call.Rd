@@ -17,6 +17,3 @@ a data.table or tibble
 \description{
 \code{basic_call} return data from ipeaData
 }
-\examples{
-   fontes <- get_fonts()
-}

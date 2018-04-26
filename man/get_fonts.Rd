@@ -15,6 +15,3 @@ a data.table with all fonts on ipeaData
 \description{
 \code{get_fonts} return fonts from ipeaData
 }
-\examples{
-   fontes <- get_fonts()
-}
