@@ -16,9 +16,9 @@ install.packages("ipeaData")
 
 The package has three functions: get_fonts, get_metadata, and get_values.
 
-get_monts returns data from fonts on IPEDATA.
-get_metada returns metadata from a serie.
-get_values returns values from a given serie.
+get_sources returns data from fonts on IPEDATA.
+get_metadata returns metadata from a serie.
+ipeadata returns values from a given serie.
 
 
 

@@ -60,13 +60,20 @@ output_control <- function(data, type="data.table"){
 #'
 basic_call <- function(api, type="data.table"){
   get_return <- GET(api)
-  return_json <- httr::content(get_return, as = "text")
-  fromJSON(return_json)$value %>% output_control(type = type) %>% return
+  if(status_code(get_return) == '200'){
+    return_json <- httr::content(get_return, as = "text")
+    fromJSON(return_json)$value %>% output_control(type = type) %>% return
+  }else{
+    error <- paste('Call to api not return a 200 code status', api, 'It returns:', status_code(get_return))
+    stop(error)
+  }
 }
 
-#' Return fonts from ipeaData .
+#' Return series sources from ipeaData. This functions
+#' can be used fot search for SERCODIGO of series. SERCODIGO
 #'
-#' \code{get_fonts} return fonts from ipeaData
+#' must be used for get series values.
+#' \code{get_sources} return series sources from ipeaData
 #'
 #'
 #' @param type The type of return, it could be data.table or tibble.
@@ -81,7 +88,7 @@ basic_call <- function(api, type="data.table"){
 #'
 #' @export
 #'
-get_fonts <- function(type="data.table"){
+get_sources <- function(type="data.table"){
   api_call <- "http://ipeadata2-homologa.ipea.gov.br/api/v1/Fontes"
   return(basic_call(api_call, type))
 }
@@ -101,7 +108,6 @@ get_fonts <- function(type="data.table"){
 get_metadata <- function(serie = NULL, type='data.table'){
   serie <- ifelse(is.null(serie) | length(serie) < 1, '', paste("('", serie, "')", sep = ""))
   api_call <- paste("http://ipeadata2-homologa.ipea.gov.br/api/v1/Metadados", serie, sep = "" )
-  cat(api_call)
   data <- basic_call(api_call, type)
   if (length(serie) > 1){
     make_citation(data)
@@ -110,19 +116,24 @@ get_metadata <- function(serie = NULL, type='data.table'){
 
 }
 
-#' Return values from a serie.
+get_values<- function(serie, type='data.table'){
+  api_call <- paste("http://ipeadata2-homologa.ipea.gov.br/api/v1/ValoresSerie(SERCODIGO='", serie, "')", sep = "" )
+  return(basic_call(api_call, type))
+}
+
+#' Return values from a serie, its metadados and citation.
 #'
-#' \code{get_values} return values from a serie.
+#' \code{ipeadata} return values from a serie.
 #'
 #' @param serie The serie number.
 #' @param type They type of return, it could be data.table or tibble.
 #'
-#' @return a data.table with all fonts on ipeaData
+#' @return a data.table or tiblle with all fonts on ipeaData
 #'
 #' @export
 #'
-get_values<- function(serie, type='data.table'){
-  api_call <- paste("http://ipeadata2-homologa.ipea.gov.br/api/v1/ValoresSerie(SERCODIGO='", serie, "')", sep = "" )
-  return(basic_call(api_call, type))
+ipeadata <-function(serie,  type='data.table'){
+  print(get_metadata(serie))
+  return(get_values(serie))
 }
 
