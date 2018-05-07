@@ -65,7 +65,8 @@ basic_call <- function(api, type="data.table"){
     fromJSON(return_json)$value %>% output_control(type = type) %>% return
   }else{
     error <- paste('Call to api not return a 200 code status', api, 'It returns:', status_code(get_return))
-    stop(error)
+    warning(error)
+    return(NULL)
   }
 }
 
