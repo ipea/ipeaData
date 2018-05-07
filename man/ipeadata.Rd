@@ -12,8 +12,12 @@ ipeadata(serie, type = "data.table")
 \item{type}{They type of return, it could be data.table or tibble.}
 }
 \value{
-a data.table or tiblle with all fonts on ipeaData
+a data.table or tibble with all fonts on ipeaData
 }
 \description{
 \code{ipeadata} return values from a serie.
+}
+\examples{
+    data <- ipeadata('ADMIS')
+
 }

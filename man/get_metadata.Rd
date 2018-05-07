@@ -15,5 +15,5 @@ get_metadata(serie = NULL, type = "data.table")
 a data.table with all fonts on ipeaData
 }
 \description{
-\code{get_metadata} Return metadadata from a serie on Ipeadata.
+\code{get_metadata} Return metadata from a serie on Ipeadata.
 }

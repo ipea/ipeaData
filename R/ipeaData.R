@@ -61,7 +61,7 @@ output_control <- function(data, type="data.table"){
 basic_call <- function(api, type="data.table"){
   get_return <- GET(api)
   if(status_code(get_return) == '200'){
-    return_json <- httr::content(get_return, as = "text")
+    return_json <- httr::content(get_return, as = "text", encoding = 'utf-8')
     fromJSON(return_json)$value %>% output_control(type = type) %>% return
   }else{
     error <- paste('Call to api not return a 200 code status', api, 'It returns:', status_code(get_return))
@@ -96,7 +96,7 @@ get_sources <- function(type="data.table"){
 
 #' Return metadadata from a serie on Ipeadata .
 #'
-#' \code{get_metadata} Return metadadata from a serie on Ipeadata.
+#' \code{get_metadata} Return metadata from a serie on Ipeadata.
 #'
 #' @param serie The serie number.
 #' @param type The type of return, it could be data.table or tibble.
@@ -128,7 +128,10 @@ get_values<- function(serie, type='data.table'){
 #' @param serie The serie number.
 #' @param type They type of return, it could be data.table or tibble.
 #'
-#' @return a data.table or tiblle with all fonts on ipeaData
+#' @return a data.table or tibble with all fonts on ipeaData
+#'
+#' @examples
+#'     data <- ipeadata('ADMIS')
 #'
 #' @export
 #'
