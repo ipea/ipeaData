@@ -19,5 +19,9 @@ a data.table or tibble with all fonts on ipeaData
 }
 \examples{
     data <- ipeadata('ADMIS')
+\donttest{
+    data <- ipeadata('ABATE_ABPEBV')
+    data <- ipeadata('ABRACAL_PCALCARIO')
+}
 
 }
