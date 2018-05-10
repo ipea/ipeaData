@@ -27,7 +27,6 @@ make_citation <- function(data){
   acess_date <- paste("Acesso em:", format(Sys.Date(), "%d/%m/%Y"), sep = " ")
   range <- paste(format_data(dat_ini), 'a', format_data(dat_end))
   cite <- paste(name_serie, range, acess_date, sep = '. ' )
-  cat(cite)
   return(cite)
 }
 
@@ -64,8 +63,8 @@ basic_call <- function(api, type="data.table"){
     return_json <- httr::content(get_return, as = "text", encoding = 'utf-8')
     fromJSON(return_json)$value %>% output_control(type = type) %>% return
   }else{
-    error <- paste('Call to api not return a 200 code status', api, 'It returns:', status_code(get_return))
-    warning(error)
+    warning_msg <- paste('Call to api not return a 200 code status', api, 'It returns:', status_code(get_return))
+    warning(warning_msg)
     return(NULL)
   }
 }
@@ -110,8 +109,8 @@ get_metadata <- function(serie = NULL, type='data.table'){
   serie <- ifelse(is.null(serie) | length(serie) < 1, '', paste("('", serie, "')", sep = ""))
   api_call <- paste("http://ipeadata2-homologa.ipea.gov.br/api/v1/Metadados", serie, sep = "" )
   data <- basic_call(api_call, type)
-  if (length(serie) > 1){
-    make_citation(data)
+  if (!is.null(data) && nrow(data) == 1){
+    print(make_citation(data))
   }
   return(data)
 
@@ -137,7 +136,7 @@ get_values<- function(serie, type='data.table'){
 #' @export
 #'
 ipeadata <-function(serie,  type='data.table'){
-  print(get_metadata(serie))
+  get_metadata(serie)
   return(get_values(serie))
 }
 
