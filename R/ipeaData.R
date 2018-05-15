@@ -116,6 +116,32 @@ get_metadata <- function(serie = NULL, type='data.table'){
 
 }
 
+#' Search for series base on a term.
+#'
+#' \code{search_serie} Return series' data from a query on Ipeadata.
+#'
+#' @param term The term to search for.
+#' @param type The type of return, it could be data.table or tibble.
+#'
+#' @return a data.table with all fonts on ipeaData
+#'
+#' @export
+#'
+search_serie <- function(serie = NULL, fields_search=c('SERCODIGO', 'SERNOME', 'PERNOME', 'UNINOME'), type='data.table'){
+  query_search <- sapply(fields_search, simplify = TRUE, function(x){ paste("contains(", x, ",'", serie, "')+or+", sep = "") })
+  query_search <- paste(query_search, collapse = "")
+  query_search <- substr(query_search, 0, nchar(query_search) - 4)
+  begin_query <- "filter=("
+  end_query <- ")&$skip=0&$top=20"
+  query_search <- paste(begin_query, query_search, end_query, sep = "")
+  print(query_search)
+  api_call <- paste("http://ipeadata2-homologa.ipea.gov.br/api/v1/Metadados?", query_search, sep = "" )
+  print(api_call)
+  data <- basic_call(api_call, type)
+  return(data)
+
+}
+
 get_values<- function(serie, type='data.table'){
   api_call <- paste("http://ipeadata2-homologa.ipea.gov.br/api/v1/ValoresSerie(SERCODIGO='", serie, "')", sep = "" )
   return(basic_call(api_call, type))
@@ -134,8 +160,8 @@ get_values<- function(serie, type='data.table'){
 #' @examples
 #'     data <- ipeadata('ADMIS')
 #' \donttest{
-#'     data <- ipeadata('ABATE_ABPEBV')
-#'     data <- ipeadata('ABRACAL_PCALCARIO')
+#'     data <- ipeadata('GAC_PIB')
+#'     data <- ipeadata('DISOC_DESE')
 #' }
 #'
 #' @export
