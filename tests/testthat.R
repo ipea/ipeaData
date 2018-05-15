@@ -1,4 +1,4 @@
 library(testthat)
-library(ipeadata)
+library(ipeaData)
 
-test_check("ipeadata")
+test_check("ipeaData")
