@@ -2,7 +2,7 @@
 % Please edit documentation in R/ipeaData.R
 \name{get_metadata}
 \alias{get_metadata}
-\title{Return metadadata from a serie on Ipeadata .}
+\title{Return metadata from a serie on Ipeadata .}
 \usage{
 get_metadata(serie = NULL, type = "data.table")
 }

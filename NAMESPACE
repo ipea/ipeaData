@@ -3,6 +3,7 @@
 export(get_metadata)
 export(get_sources)
 export(ipeadata)
+export(search_serie)
 import(httr)
 import(jsonlite)
 importFrom(data.table,setDT)

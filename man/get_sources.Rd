@@ -3,7 +3,7 @@
 \name{get_sources}
 \alias{get_sources}
 \title{Return series sources from ipeaData. This functions
-can be used fot search for SERCODIGO of series. SERCODIGO}
+can be used for search for SERCODIGO of series. SERCODIGO}
 \usage{
 get_sources(type = "data.table")
 }

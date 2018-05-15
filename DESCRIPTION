@@ -1,7 +1,7 @@
 Package: ipeadata
 Type: Package
 Title: Getting Data from IPEADATA
-Version: 0.0.1
+Version: 0.0.2
 Authors@R: c(
     person("Gustavo","Coelho", role=c("aut","cre"), email="gustavo.coelho@ipea.gov.br"),
     person("Lucas","Mation", role=c("aut"), email="lucas.mation@ipea.gov.br")
