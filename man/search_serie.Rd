@@ -4,8 +4,8 @@
 \alias{search_serie}
 \title{Search for series base on a term.}
 \usage{
-search_serie(term = NULL, fields_search = c("SERCODIGO", "SERNOME",
-  "PERNOME", "UNINOME"), type = "data.table")
+search_serie(term = NULL, fields_search = c("SERNOME"),
+  type = "data.table")
 }
 \arguments{
 \item{term}{The term to search for.}
