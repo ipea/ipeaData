@@ -9,7 +9,7 @@ This package has functions to access series on [IPEADATA](http://www.ipeadata.go
 The package is on CRAN, so to install it just use the command:
 
 ```{r eval=FALSE}
-install.packages("ipeaData") 
+install.packages("ipeadata") 
 ````
 
 ## Use
@@ -17,9 +17,27 @@ install.packages("ipeaData")
 The package has three functions: get_fonts, get_metadata, and get_values.
 
 get_sources returns data from fonts on IPEDATA.
+
 get_metadata returns metadata from a serie.
+
 ipeadata returns values from a given serie.
 
+Ipeadata and get_metada work passing a  SERCODIGO's serie as required parameter. Is also
+can receive as optional parameter the type of return: data.table or tibble.
+
+The follow examples can make clear the usage:
+
+```{r eval=FALSE}
+ get_sources()
+````
+
+```{r eval=FALSE}
+ get_metadata('ADMIS')
+````
+
+```{r eval=FALSE}
+ ipeadata('ADMIS')
+````
 
 
 ## Contributing 
@@ -39,3 +57,42 @@ After adding the new code and [**tests**](http://r-pkgs.had.co.nz/tests.html#tes
 if it has been build correctly. 
 
 Now, the code is ready to be incorporated to master branch. To do so, a [pull request](https://help.github.com/articles/about-pull-requests/) has to be made to branch dev. The branch dev contains all code that is not released on CRAN.
+
+
+# Manual
+## Instalação
+
+o pacote encontra-se no CRAN, portanto para instala-lo basta usar o comando: 
+
+```{r eval=FALSE}
+install.packages("ipeadata") 
+````
+
+## Uso
+
+o pacote tem três principais funções: get_fonts, get_metadata, and get_values.
+
+get_sources retorna dados sobre as fontes do IPEA.
+
+get_metadata retorna os metadados de uma serie.
+
+ipeadata returns retorna os valores para uma dada serie.
+
+Ipeadata e get_metadata necessitam de um parâmetro obrigatório que é o SERCODIGO da 
+serie. As funções ainda possuem um parâmetro não obrigatório que informa o tipo
+de retorno desejado: data.table ou tibble. 
+
+Os exemplos abaixo permitem visualizar melhor o uso dessa funções:
+
+```{r eval=FALSE}
+ get_sources()
+````
+
+```{r eval=FALSE}
+ get_metadata('ADMIS')
+````
+
+```{r eval=FALSE}
+ ipeadata('ADMIS')
+````
+

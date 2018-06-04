@@ -19,3 +19,8 @@ test_that("ipeaData", {
   suppressWarnings(result <- ipeadata('SERIE SEM RETORNO'))
   expect_true(is.null(result))
 })
+
+test_that("search_serie", {
+  r <- search_serie('pib', fields_search = ('SERNOME'))
+  expect_equal(c('data.table', 'data.frame'), class(r))
+})

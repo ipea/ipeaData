@@ -2,7 +2,7 @@
 % Please edit documentation in R/ipeaData.R
 \name{ipeadata}
 \alias{ipeadata}
-\title{Return values from a serie, its metadados and citation.}
+\title{Return values from a serie, its metadata and citation.}
 \usage{
 ipeadata(serie, type = "data.table")
 }
@@ -20,8 +20,8 @@ a data.table or tibble with all fonts on ipeaData
 \examples{
     data <- ipeadata('ADMIS')
 \donttest{
-    data <- ipeadata('ABATE_ABPEBV')
-    data <- ipeadata('ABRACAL_PCALCARIO')
+    data <- ipeadata('GAC_PIB')
+    data <- ipeadata('DISOC_DESE')
 }
 
 }

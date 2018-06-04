@@ -2,4 +2,5 @@
 ^\.Rproj\.user$
 ^codecov\.yml$
 ^.travis.yml$
+^.gitlab-ci.yml$
 ^cran-comments\.md$

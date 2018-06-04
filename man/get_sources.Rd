@@ -2,8 +2,7 @@
 % Please edit documentation in R/ipeaData.R
 \name{get_sources}
 \alias{get_sources}
-\title{Return series sources from ipeaData. This functions
-can be used fot search for SERCODIGO of series. SERCODIGO}
+\title{Return series sources from ipeaData.}
 \usage{
 get_sources(type = "data.table")
 }

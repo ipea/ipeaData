@@ -2,7 +2,7 @@
 % Please edit documentation in R/ipeaData.R
 \name{format_data}
 \alias{format_data}
-\title{Return data formated for citation .}
+\title{Return data formatted for citation .}
 \usage{
 format_data(date_value)
 }
@@ -10,5 +10,5 @@ format_data(date_value)
 \item{date_value}{data as Date object}
 }
 \description{
-\code{format_data} return data formated for citation
+\code{format_data} return data formatted for citation
 }
