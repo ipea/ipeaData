@@ -42,7 +42,7 @@ The follow examples can make clear the usage:
 
 ## Contributing 
 
-To add new functions to this package, it is needed to create a new breach with the new code and submit a 
+To add new functions to this package, it is needed to create a new branch with the new code and submit a 
 pull request to branch dev. 
 
 To create the new branch using git command line use the command:
